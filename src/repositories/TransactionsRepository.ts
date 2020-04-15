@@ -26,13 +26,13 @@ class TransactionsRepository {
   public getBalance(): Balance {
     const income = this.transactions
       .filter(transaction => transaction.type === 'income')
-      .reduce((total: number, { value }) => {
+      .reduce<number>((total, { value }) => {
         return total + value;
       }, 0);
 
     const outcome = this.transactions
       .filter(transaction => transaction.type === 'outcome')
-      .reduce((total: number, { value }) => {
+      .reduce<number>((total, { value }) => {
         return total + value;
       }, 0);
 
